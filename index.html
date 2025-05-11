@@ -1,35 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Multi-Method CSS Example</title>
-  <style>
-    /* Internal CSS styles */
-    h1 {
-      color: navy;
-      font-size: 28px;
-      background-color: #f0f0f0; /* Fixed color */
-    }
-    .highlighted-text {
-      background-color: yellow;
-      color: red;
-    }
-  </style>
-  <link rel="stylesheet" href="styles.css">
+  <title>My Portfolio</title>
 </head>
-<body>
+<body style="margin: 0; font-family: Arial, sans-serif;">
 
-  <!-- Inline style fixed -->
-  <h1>Main Title</h1>
-  
-  <!-- Inline style with corrected color -->
-  <p style="font-size: 16px; color: #333333;">This paragraph has inline styles applied.</p>
-  
-  <!-- Class-based style -->
-  <p class="highlighted-text">This paragraph uses a class-based style.</p>
-  
-  <div id="main-container">
-    <p>This div should have styles from the external stylesheet.</p>
+  <!-- Header -->
+  <div style="background-color: #ff5733; padding: 20px; text-align: center;">
+    <h2 style="color: blue; margin: 0;">Welcome to My Portfolio</h2>
+    <div style="margin-top: 10px;">
+      <a href="#about" style="margin: 0 10px; color: white; text-decoration: none;"
+         onmouseover="this.style.textDecoration='underline'"
+         onmouseout="this.style.textDecoration='none'">About</a>
+      <a href="#projects" style="margin: 0 10px; color: white; text-decoration: none;"
+         onmouseover="this.style.textDecoration='underline'"
+         onmouseout="this.style.textDecoration='none'">Projects</a>
+      <a href="#contact" style="margin: 0 10px; color: white; text-decoration: none;"
+         onmouseover="this.style.textDecoration='underline'"
+         onmouseout="this.style.textDecoration='none'">Contact</a>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <div id="about" style="padding: 20px;">
+    <h3>About Me</h3>
+    <p>Hello! I'm a web developer with a passion for creating functional and beautiful web applications.</p>
+    <p>A picture of me (Upload Passport Size Photo):</p>
+    <input type="file" accept="image/*"
+           style="width: 120px; height: 150px; border: 1px solid #ccc; padding: 5px; background-color: #f2f2f2;">
+  </div>
+
+  <!-- Projects Section -->
+  <div id="projects" style="padding: 20px;">
+    <h3>Projects</h3>
+
+    <!-- Project One -->
+    <div style="border: 2px solid #aaa; padding: 15px; margin-bottom: 20px; background-color: #f9f9f9;">
+      <h4>Project One: Personal Blog</h4>
+      <p>Upload Screenshot of your personal blog project:</p>
+      <input type="file" accept="image/*"
+             style="margin-bottom: 10px;"><br>
+      <p>A personal blog where I write about web development, programming, and technology.</p>
+      <a href="#" style="color: blue;">View Project</a>
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+      </ul>
+    </div>
+
+    <!-- Project Two -->
+    <div style="border: 2px solid #aaa; padding: 15px; background-color: #f9f9f9;">
+      <h4>Project Two: E-commerce Site</h4>
+      <p>Upload Screenshot of your e-commerce project:</p>
+      <input type="file" accept="image/*"
+             style="margin-bottom: 10px;"><br>
+      <p>An e-commerce website built to simulate a real-world online shopping experience.</p>
+      <a href="#" style="color: blue;">View Project</a>
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div id="contact" style="padding: 20px;">
+    <h3>Contact Me</h3>
+    <form>
+      <label>Full Name:</label><br>
+      <input type="text"
+             style="width: 300px; padding: 8px; margin-bottom: 10px; border: 2px outset #aaa;"><br>
+
+      <label>Email:</label><br>
+      <input type="email"
+             style="width: 300px; padding: 8px; margin-bottom: 10px; border: 2px outset #aaa;"><br>
+
+      <label>Message:</label><br>
+      <textarea
+             style="width: 300px; height: 100px; padding: 8px; border: 2px outset #aaa;"></textarea><br><br>
+
+      <button id="button"
+              style="padding: 10px; border: 1px solid gray; background-color: #B4886B; border-radius: 5px; font: inherit; cursor: pointer;"
+              onmouseover="this.style.backgroundColor='#a77a5e'"
+              onmouseout="this.style.backgroundColor='#B4886B'"
+              onfocus="this.style.outline='2px solid #444'"
+              onblur="this.style.outline='none'">Submit</button>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <div style="background-color: #ff5733; text-align: center; padding: 10px; margin-top: 20px;">
+    <p style="margin: 0;">© 2024 My Portfolio</p>
+    <p style="margin: 5px 0;">Follow me on 
+      <a href="#" style="color: white; text-decoration: underline;">Twitter</a> | 
+      <a href="#" style="color: white; text-decoration: underline;">GitHub</a>
+    </p>
   </div>
 
 </body>
