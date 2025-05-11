@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive List Styling (CSS Only)</title>
+  <style>
+    /* Hide radio buttons */
+    input[type="radio"] {
+      display: none;
+    }
+
+    /* Style the label as a list item */
+    .list-item {
+      display: block;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    /* Hover effect */
+    .list-item:hover {
+      color: darkorange;
+    }
+
+    /* First item bold */
+    #item1 + label {
+      font-weight: bold;
+    }
+
+    /* Second item background (adjacent sibling) */
+    #item1:checked ~ #item2 + label {
+      background-color: #e0f7fa;
+    }
+
+    /* Italic for items after the third one */
+    #item3:checked ~ label:nth-of-type(n+4) {
+      font-style: italic;
+    }
+
+    /* Highlight when selected */
+    input[type="radio"]:checked + label {
+      background-color: #ffe0b2;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <form>
+    <input type="radio" name="select" id="item1">
+    <label for="item1" class="list-item">Item 1 (bold)</label>
+
+    <input type="radio" name="select" id="item2">
+    <label for="item2" class="list-item">Item 2 (highlight after item 1)</label>
+
+    <input type="radio" name="select" id="item3">
+    <label for="item3" class="list-item">Item 3</label>
+
+    <input type="radio" name="select" id="item4">
+    <label for="item4" class="list-item">Item 4 (italic after item 3)</label>
+
+    <input type="radio" name="select" id="item5">
+    <label for="item5" class="list-item">Item 5 (italic after item 3)</label>
+  </form>
+
+</body>
+</html>
