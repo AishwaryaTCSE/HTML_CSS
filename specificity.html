@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Complex Navigation Styling</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    nav {
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+
+    .section {
+      margin-bottom: 20px;
+    }
+
+    .section h2 {
+      margin-bottom: 10px;
+    }
+
+    /* Descendant combinator: style all links inside each section differently */
+    .section1 a {
+      color: steelblue;
+    }
+
+    .section2 a {
+      color: seagreen;
+    }
+
+    .section3 a {
+      color: sienna;
+    }
+
+    /* Hover and Active States */
+    nav a:hover {
+      text-decoration: underline;
+      color: darkorange;
+    }
+
+    nav a:active {
+      color: red;
+    }
+
+    /* Child combinator: only direct child links of each section */
+    .section1 > a {
+      font-weight: bold;
+    }
+
+    .section2 > a {
+      font-style: italic;
+    }
+
+    .section3 > a {
+      text-transform: uppercase;
+    }
+
+    /* Links with href starting with https - overriding with high specificity */
+    nav a[href^="https"] {
+      color: darkviolet !important;
+      font-weight: bold;
+      border-bottom: 2px dotted darkviolet;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="section section1">
+      <h2>Section 1</h2>
+      <a href="https://example.com">Home</a><br>
+      <div><a href="http://nested.com">Nested Link 1</a></div>
+      <div><a href="https://nested-secure.com">Nested Secure</a></div>
+    </div>
+
+    <div class="section section2">
+      <h2>Section 2</h2>
+      <a href="http://about.com">About</a><br>
+      <div><a href="https://team.com">Our Team</a></div>
+      <div><a href="http://contact.com">Contact</a></div>
+    </div>
+
+    <div class="section section3">
+      <h2>Section 3</h2>
+      <a href="https://services.com">Services</a><br>
+      <div><a href="http://pricing.com">Pricing</a></div>
+      <div><a href="https://support.com">Support</a></div>
+    </div>
+  </nav>
+
+</body>
+</html>
