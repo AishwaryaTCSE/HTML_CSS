@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Styling with ID Selectors and Universal Selector</title>
+  <style>
+    /* Universal selector to remove default margin and padding from all elements */
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Styling for h1 element with id 'main-title' */
+    #main-title {
+      font-size: 32px; /* Font size of 32px */
+      color: darkblue; /* Dark blue text color */
+      text-align: center; /* Center-aligned text */
+    }
+
+    /* Styling for h2 element with id 'subtitle' */
+    #subtitle {
+      font-size: 24px; /* Font size of 24px */
+      color: darkgreen; /* Dark green text color */
+    }
+
+    /* Styling for paragraphs */
+    p {
+      padding: 15px; /* Padding inside paragraphs */
+      border: 2px solid lightgray; /* Light gray border around paragraphs */
+      margin-bottom: 10px; /* Bottom margin for spacing between paragraphs */
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="main-title">Main Title</h1>
+  <h2 id="subtitle">Subtitle</h2>
+
+  <p>This is the first paragraph with padding and a soft border.</p>
+  <p>This is the second paragraph with padding and a soft border.</p>
+  <p>This is the third paragraph with padding and a soft border.</p>
+
+</body>
+</html>
