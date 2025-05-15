@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Propagation Demo</title>
+  <style>
+    .box {
+      padding: 20px;
+      margin: 10px;
+      border: 2px solid black;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="div1" class="box">
+    Div 1
+    <button id="btn1">Button 1</button>
+
+    <div id="div2" class="box">
+      Div 2
+      <button id="btn2">Button 2</button>
+
+      <div id="div3" class="box">
+        Div 3
+        <button id="btn3">Button 3</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Event Propagation has two phases:
+    // 1. Capturing phase: From top (document) to the target
+    // 2. Bubbling phase: From the target back up to the top
+
+    // Get references to all divs and buttons
+    const div1 = document.getElementById("div1");
+    const div2 = document.getElementById("div2");
+    const div3 = document.getElementById("div3");
+
+    const btn1 = document.getElementById("btn1");
+    const btn2 = document.getElementById("btn2");
+    const btn3 = document.getElementById("btn3");
+
+    // Function to add both capturing and bubbling event listeners
+    function addListeners(element, name) {
+      // Capturing phase
+      element.addEventListener("click", () => {
+        alert(`Capturing: ${name}`);
+      }, true); // true = capture phase
+
+      // Bubbling phase
+      element.addEventListener("click", () => {
+        alert(`Bubbling: ${name}`);
+      }, false); // false = bubble phase
+    }
+
+    // Add listeners to all divs
+    addListeners(div1, "Div 1");
+    addListeners(div2, "Div 2");
+    addListeners(div3, "Div 3");
+
+    // Add listeners to Button 1 and Button 2
+    addListeners(btn1, "Button 1");
+    addListeners(btn2, "Button 2");
+
+    // Button 3 stops propagation
+    btn3.addEventListener("click", function(event) {
+      event.stopPropagation(); // Stops the event from bubbling or capturing further
+      alert("Button 3 Clicked - Propagation Stopped");
+    });
+  </script>
+
+</body>
+</html>
