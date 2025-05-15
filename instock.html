@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Product Grid View</title>
+  <style>
+    /* Container for grid */
+    #productGrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 800px;
+      margin: 20px auto;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Each product card */
+    .product {
+      padding: 16px;
+      border-radius: 8px;
+      color: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 16px;
+    }
+
+    /* In-stock products: green background */
+    .in-stock {
+      background-color: #28a745; /* Bootstrap green */
+    }
+
+    /* Out-of-stock products: red background */
+    .out-of-stock {
+      background-color: #dc3545; /* Bootstrap red */
+    }
+
+    .label {
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 4px;
+      align-self: flex-start;
+      font-size: 14px;
+      background: rgba(255, 255, 255, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="text-align:center;">Product Grid View</h2>
+  <div id="productGrid"></div>
+
+  <script>
+    // Given array of product objects
+    const products = [
+      { id: 1, name: "Product A", price: 50, inStock: true },
+      { id: 2, name: "Product B", price: 30, inStock: false },
+      { id: 3, name: "Product C", price: 70, inStock: true },
+      { id: 4, name: "Product D", price: 20, inStock: false }
+    ];
+
+    // Reference to container div
+    const grid = document.getElementById('productGrid');
+
+    // Iterate over products and create divs
+    products.forEach(product => {
+      const productDiv = document.createElement('div');
+      productDiv.classList.add('product');
+
+      // Add class based on inStock value for conditional styling
+      if (product.inStock) {
+        productDiv.classList.add('in-stock');
+      } else {
+        productDiv.classList.add('out-of-stock');
+      }
+
+      // Create inner HTML with product details
+      productDiv.innerHTML = `
+        <div><strong>${product.name}</strong></div>
+        <div>Price: $${product.price}</div>
+        <div class="label">${product.inStock ? 'In Stock' : 'Out of Stock'}</div>
+      `;
+
+      // Append to grid container
+      grid.appendChild(productDiv);
+    });
+  </script>
+
+</body>
+</html>
