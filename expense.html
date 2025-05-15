@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fakestore Products Grid</title>
+  <style>
+    /* Container grid */
+    #productGrid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1200px;
+      margin: 30px auto;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Each product card */
+    .product {
+      border: 3px solid green; /* default border for price <= 50 */
+      padding: 16px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: border-color 0.3s ease;
+    }
+
+    /* Border color for price > 50 */
+    .expensive {
+      border-color: gold; /* yellow-ish border */
+    }
+
+    .product img {
+      max-width: 100%;
+      max-height: 150px;
+      object-fit: contain;
+      margin-bottom: 12px;
+    }
+
+    .product .title {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 8px;
+      text-align: center;
+      height: 40px; /* fix height for consistent layout */
+      overflow: hidden;
+    }
+
+    .product .price {
+      font-size: 14px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 style="text-align:center;">Fakestore Products</h1>
+  <div id="productGrid">Loading products...</div>
+
+  <script>
+    // Reference to the grid container
+    const grid = document.getElementById('productGrid');
+
+    // Fetch products from FakestoreAPI
+    fetch('https://fakestoreapi.com/products')
+      .then(response => response.json())
+      .then(products => {
+        // Clear loading text
+        grid.innerHTML = '';
+
+        products.forEach(product => {
+          // Create product card div
+          const productDiv = document.createElement('div');
+          productDiv.classList.add('product');
+
+          // Conditional border color based on price
+          if (product.price > 50) {
+            productDiv.classList.add('expensive');
+          }
+
+          // Set inner HTML with image, title and price
+          productDiv.innerHTML = `
+            <img src="${product.image}" alt="${product.title}" />
+            <div class="title" title="${product.title}">${product.title}</div>
+            <div class="price">$${product.price.toFixed(2)}</div>
+          `;
+
+          // Append product card to grid
+          grid.appendChild(productDiv);
+        });
+      })
+      .catch(err => {
+        grid.innerHTML = "Failed to load products.";
+        console.error("Error fetching products:", err);
+      });
+  </script>
+
+</body>
+</html>
