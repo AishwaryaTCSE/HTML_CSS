@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dynamic Theme Selector</title>
+  <style>
+    /* Define theme styles */
+    body.light {
+      background-color: #ffffff;
+      color: #000000;
+    }
+    body.dark {
+      background-color: #121212;
+      color: #ffffff;
+    }
+    body.blue {
+      background-color: #007BFF;
+      color: #f0f8ff;
+    }
+    
+    /* Basic page styling */
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    label, select {
+      font-size: 1.2rem;
+    }
+
+    select {
+      margin-left: 1rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <label for="themeSelector">Select Theme:</label>
+  <select id="themeSelector">
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+    <option value="blue">Blue</option>
+  </select>
+
+  <script>
+    const themeSelector = document.getElementById("themeSelector");
+    const body = document.body;
+
+    // Apply a theme by updating body's class
+    function applyTheme(theme) {
+      // Remove all theme classes first
+      body.classList.remove("light", "dark", "blue");
+      // Add the selected theme class
+      body.classList.add(theme);
+    }
+
+    // Load theme from sessionStorage and apply it
+    function loadTheme() {
+      const savedTheme = sessionStorage.getItem("selectedTheme");
+      if (savedTheme) {
+        applyTheme(savedTheme);
+        themeSelector.value = savedTheme;
+      } else {
+        // Default to light theme
+        applyTheme("light");
+        themeSelector.value = "light";
+      }
+    }
+
+    // Listen for dropdown changes
+    themeSelector.addEventListener("change", (e) => {
+      const selectedTheme = e.target.value;
+      applyTheme(selectedTheme);
+      sessionStorage.setItem("selectedTheme", selectedTheme);
+    });
+
+    // Load theme when page loads
+    window.addEventListener("DOMContentLoaded", loadTheme);
+  </script>
+</body>
+</html>
